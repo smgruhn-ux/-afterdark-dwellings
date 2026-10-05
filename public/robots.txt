@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smgruhn-ux.github.io/-afterdark-dwellings/sitemap.xml
