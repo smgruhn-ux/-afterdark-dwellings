@@ -199,7 +199,10 @@ function ProductLink({ product, compact = false }: { product: Product; compact?:
 
   return (
     <article className={compact ? 'product-card compact' : 'product-card'}>
-      <span className="product-category">{product.category} / {product.merchant}</span>
+      <div className="product-topline">
+        <span className="product-category">{product.category} / {product.merchant}</span>
+        {product.verified && <span className="verified-mark">VERIFIED DESTINATION</span>}
+      </div>
       <h3>{product.name}</h3>
       <p>{product.editorialNote}</p>
       <a href={url} target="_blank" rel={rel}>View at {product.merchant} →</a>
@@ -235,6 +238,24 @@ function HomePage() {
           className="hero-image"
           priority
         />
+      </section>
+
+      <section className="trust-band" aria-label="Afterdark Dwellings editorial standards">
+        <div>
+          <span>01</span>
+          <strong>ORIGINAL GUIDES</strong>
+          <p>Practical editorial built around real design decisions, not recycled trend lists.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>VERIFIED DESTINATIONS</strong>
+          <p>Purchasable recommendations point to real merchant pages before they appear as live finds.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>NO INVENTED LISTINGS</strong>
+          <p>No fabricated prices, ratings, reviews, availability or affiliate relationships.</p>
+        </div>
       </section>
 
       <section className="content-section">
@@ -368,6 +389,15 @@ function GuideArticlePage() {
         <div className="guide-grid compact-grid">
           {related.map((item) => <GuideCard guide={item} key={item.slug} />)}
         </div>
+        <div className="related-spaces">
+          <span>EXPLORE THE ROOM</span>
+          <div>
+            {guide.relatedSpaces.map((spaceSlug) => {
+              const space = spaceBySlug[spaceSlug];
+              return space ? <Link key={spaceSlug} to={`/spaces/${spaceSlug}`}>{space.name} →</Link> : null;
+            })}
+          </div>
+        </div>
       </section>
 
       <section className="article-pinterest">
@@ -452,23 +482,33 @@ function SpacePage() {
 }
 
 function CuratedFindsPage() {
-  const categories = Array.from(new Set(products.map((product) => product.category)));
+  const categories = ['Lighting', 'Furniture', 'Mirrors', 'Stone + Material', 'Textiles', 'Storage', 'Kitchen', 'Bath', 'Objects'];
 
   return (
     <>
       <SEO title="Curated Finds | Afterdark Dwellings" description="Verified lighting, furniture, mirrors, objects and home upgrades selected for dark modern interiors by Afterdark Dwellings." />
       <PageHero kicker="VERIFIED RETAILER LINKS" title="REAL FINDS. SELECTED AFTERDARK." copy="No invented inventory, fake prices, or filler listings. Each live recommendation corresponds to a real retailer destination." />
       <section className="content-section">
-        {categories.map((category) => (
-          <div className="category-block" key={category}>
-            <SectionTitle index={category.toUpperCase()} title={category.toUpperCase()} />
-            <div className="product-grid">
-              {products.filter((product) => product.category === category).map((product) => (
-                <ProductLink product={product} key={product.id} />
-              ))}
+        <div className="finds-intro">
+          <p>Curated Finds is organized by use, not by whatever happens to be trending. Live product cards are verified against real merchant destinations. Empty categories stay visibly empty until there is something worth adding.</p>
+        </div>
+        {categories.map((category) => {
+          const categoryProducts = products.filter((product) => product.category === category);
+          return (
+            <div className="category-block" key={category}>
+              <SectionTitle index={category.toUpperCase()} title={category.toUpperCase()} />
+              {categoryProducts.length > 0 ? (
+                <div className="product-grid">
+                  {categoryProducts.map((product) => (
+                    <ProductLink product={product} key={product.id} />
+                  ))}
+                </div>
+              ) : (
+                <ComingSoon>No verified {category.toLowerCase()} recommendation has been added yet.</ComingSoon>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
         <p className="disclosure wide">
           Retailer links on this page are provided for product discovery. If an affiliate relationship is activated and a tracked link is added, the relevant disclosure will be shown. Merchant pricing, stock, shipping, returns and warranty terms can change.
         </p>
@@ -503,6 +543,10 @@ function ShopTheLookPage() {
     <>
       <SEO title="Shop the Look | Afterdark Dwellings" description="Shop editorial dark-interior looks with verified retailer links selected by Afterdark Dwellings." />
       <PageHero kicker="ROOM / OBJECT / SOURCE" title="SHOP THE LOOK." copy="Start with a room composition, then move directly to the real objects that can help build it." />
+      <section className="shop-look-note">
+        <span>HOW THIS WORKS</span>
+        <p>The room image sets the direction. Only products already verified against real retailer destinations are linked below it. A visual match is editorial inspiration, not a claim that the exact photographed room contains those products.</p>
+      </section>
       <section className="content-section looks">
         {looks.map((look) => (
           <article className="look" key={look.name}>
