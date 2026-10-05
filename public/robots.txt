@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://smgruhn-ux.github.io/afterdark-dwellings/sitemap.xml
+Sitemap: https://afterdarkdwellings.jo3.org/sitemap.xml
