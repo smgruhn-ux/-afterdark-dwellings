@@ -108,15 +108,11 @@ When the domain is purchased:
 5. Re-check canonical/SEO URLs and Pinterest domain verification.
 6. Update Pinterest, Amazon Associates, CJ, and other affiliate properties only after the new domain is live.
 
-## Repository name note
+## Repository name
 
-The current GitHub repository name begins with a leading hyphen: `-afterdark-dwellings`.
-
-The preferred repository name is:
+The repository name is correctly set to:
 
 `afterdark-dwellings`
-
-Renaming the repository in GitHub settings is recommended before the public GitHub Pages URL is promoted. After a rename, also update the temporary GitHub Pages URLs in `public/sitemap.xml`, `public/robots.txt`, and the Pages fallback path in `public/404.html`.
 
 ## Editorial rules
 
