@@ -1,0 +1,17 @@
+{
+  "name": "Afterdark Dwellings",
+  "short_name": "Afterdark",
+  "description": "Dark interiors, considered objects, and home upgrades worth bringing inside.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050506",
+  "theme_color": "#050506",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
