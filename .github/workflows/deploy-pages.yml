@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
   build:
+    env:
+      AFTERDARK_CUSTOM_DOMAIN: "true"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
