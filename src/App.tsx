@@ -492,10 +492,15 @@ function CuratedFindsPage() {
         <div className="finds-intro">
           <p>Curated Finds is organized by use, not by whatever happens to be trending. Live product cards are verified against real merchant destinations. Empty categories stay visibly empty until there is something worth adding.</p>
         </div>
+        <nav className="finds-nav" aria-label="Curated Finds categories">
+          {categories.map((category) => (
+            <a key={category} href={`#finds-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{category}</a>
+          ))}
+        </nav>
         {categories.map((category) => {
           const categoryProducts = products.filter((product) => product.category === category);
           return (
-            <div className="category-block" key={category}>
+            <div className="category-block" id={`finds-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} key={category}>
               <SectionTitle index={category.toUpperCase()} title={category.toUpperCase()} />
               {categoryProducts.length > 0 ? (
                 <div className="product-grid">
@@ -524,18 +529,21 @@ function ShopTheLookPage() {
       label: 'LOOK 01 / LIVING ROOM',
       image: images.blackStone,
       productIds: ['walmart-arc-floor-lamp', 'walmart-end-table', 'walmart-metal-tray', 'walmart-organic-mirror'],
+      spaceSlug: 'living-rooms',
     },
     {
       name: 'Afterdark Entry',
       label: 'LOOK 02 / ENTRYWAY',
       image: images.entryway,
       productIds: ['lowes-up-down-sconce', 'walmart-organic-mirror', 'walmart-metal-tray'],
+      spaceSlug: 'entryways',
     },
     {
       name: 'Focused Home Office',
       label: 'LOOK 03 / OFFICE',
       image: images.office,
       productIds: ['walmart-desk-lamp', 'lowes-pharmacy-lamp'],
+      spaceSlug: 'home-offices',
     },
   ];
 
@@ -554,6 +562,7 @@ function ShopTheLookPage() {
             <div className="look-copy">
               <span className="eyebrow">{look.label}</span>
               <h2>{look.name}</h2>
+              <Link className="look-room-link" to={`/spaces/${look.spaceSlug}`}>Read the room guide →</Link>
               <div className="look-products">
                 {look.productIds.map((id, index) => {
                   const product = getProduct(id);
