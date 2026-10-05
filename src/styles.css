@@ -1039,6 +1039,124 @@ a {
   color: var(--text);
 }
 
+
+.trust-band {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #050506;
+}
+
+.trust-band > div {
+  min-height: 190px;
+  padding: 1.7rem clamp(1.2rem, 3vw, 2.6rem);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.trust-band > div:last-child {
+  border-right: 0;
+}
+
+.trust-band span,
+.shop-look-note span,
+.related-spaces > span {
+  color: var(--dim);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+}
+
+.trust-band strong {
+  margin-top: auto;
+  font-family: Cinzel, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.trust-band p {
+  max-width: 420px;
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.product-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.verified-mark {
+  flex: 0 0 auto;
+  color: #b9b7b2;
+  font-size: 0.5rem;
+  letter-spacing: 0.13em;
+  text-align: right;
+}
+
+.related-spaces {
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.related-spaces > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.related-spaces a {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--steel);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.related-spaces a:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.finds-intro {
+  max-width: 840px;
+  margin-bottom: 4.5rem;
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--line-strong);
+}
+
+.finds-intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.shop-look-note {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 760px);
+  gap: 2rem;
+  padding: 2.2rem clamp(1.2rem, 5vw, 5rem);
+  border-bottom: 1px solid var(--line);
+  background: #060607;
+}
+
+.shop-look-note p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 @media (max-width: 1180px) {
   .main-nav {
     gap: 1rem;
@@ -1058,6 +1176,26 @@ a {
 }
 
 @media (max-width: 920px) {
+  .trust-band {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-band > div {
+    min-height: 150px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .trust-band > div:last-child {
+    border-bottom: 0;
+  }
+
+  .shop-look-note {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+
   .site-header {
     min-height: 74px;
   }
@@ -1171,6 +1309,30 @@ a {
 }
 
 @media (max-width: 680px) {
+  .product-topline {
+    display: block;
+  }
+
+  .verified-mark {
+    display: block;
+    margin-top: 0.45rem;
+    text-align: left;
+  }
+
+  .related-spaces > div {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .related-spaces a {
+    width: 100%;
+  }
+
+  .finds-intro {
+    margin-bottom: 3.5rem;
+  }
+
+
   .site-header {
     padding: 0.85rem 1rem;
   }
