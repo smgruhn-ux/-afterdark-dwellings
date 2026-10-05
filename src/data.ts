@@ -2,7 +2,7 @@ export const site = {
   name: 'Afterdark Dwellings',
   email: 'afterdarkdwellings@gmail.com',
   pinterest: 'https://www.pinterest.com/afterdarkdwellings/',
-  temporaryBaseUrl: 'https://smgruhn-ux.github.io/afterdark-dwellings/',
+  temporaryBaseUrl: 'https://afterdarkdwellings.jo3.org/',
 };
 
 export const images = {
