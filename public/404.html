@@ -9,7 +9,7 @@
     <script>
       (function () {
         var isProjectPages = window.location.hostname.endsWith('github.io');
-        var base = isProjectPages ? '/-afterdark-dwellings' : '';
+        var base = isProjectPages ? '/afterdark-dwellings' : '';
         var path = window.location.pathname;
         if (base && path.indexOf(base) === 0) path = path.slice(base.length);
         var target = path + window.location.search + window.location.hash;
